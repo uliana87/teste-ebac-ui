@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 
 describe('Funcionalidade: Cadastro', () => {
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('/minha-conta/')
     });
     it('Deve completar o cadastro com sucesso', () => {
         cy.get('#reg_email').type(faker.internet.email())
@@ -14,7 +14,6 @@ describe('Funcionalidade: Cadastro', () => {
         cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
         cy.get('#account_first_name').type(faker.person.firstName())
         cy.get('#account_last_name').type(faker.person.lastName())
-        cy.wait(5000)
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
@@ -33,6 +32,10 @@ describe('Funcionalidade: Cadastro', () => {
         cy.wait(5000)
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
+});
+it.only('Deve completar o cadastro com sucesso - usando comando customizado', () => {
+    cy. preCadastro(faker.internet.email(),'matteus152030',faker.person.firstName(),faker.person.lastName())
+    cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
 });
         
 });   
