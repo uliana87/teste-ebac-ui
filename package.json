@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "teste-ebac-ui": "cypress run",
+    "cy:dash": "npx cypress run --record --key 0e0a94c9-b2ae-4181-9c03-649e11650a99"
   },
   "keywords": [],
   "author": "",
